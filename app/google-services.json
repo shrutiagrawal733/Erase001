@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "457842156514",
+    "firebase_url": "https://erase-fa68c.firebaseio.com",
+    "project_id": "erase-fa68c",
+    "storage_bucket": "erase-fa68c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457842156514:android:ab985b9da4e14ad507cfbb",
+        "android_client_info": {
+          "package_name": "com.example.erase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457842156514-eer7uilifsemtneuirsae514k5vs4d8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbHVLzO-sx2UmGKAiVXNjlDgx8KcttMIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457842156514-eer7uilifsemtneuirsae514k5vs4d8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
