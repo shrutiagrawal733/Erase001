@@ -4,10 +4,10 @@
     <item>
         <shape android:shape="ring"
             android:innerRadius="3dp"
-            android:thickness="2dp"
+            android:thickness="2.5dp"
             android:useLevel="false">
 
-            <solid android:color="@color/gradient_start_colour"/>
+            <solid android:color="#052E87"/>
         </shape>
 
     </item>

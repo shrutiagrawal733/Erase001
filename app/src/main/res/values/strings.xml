@@ -107,4 +107,8 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="map">Map</string>
+    <string name="store">Store</string>
+    <string name="buy">Buy</string>
+    <string name="repair">Repair</string>
+    <string name="user">User</string>
 </resources>

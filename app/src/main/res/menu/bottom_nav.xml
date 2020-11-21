@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/store"
+        android:id="@+id/store"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/store"/>
+    <item android:title="@string/buy"
+        android:id="@+id/buy"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/buy"/>
+    <item android:title="@string/repair"
+        android:id="@+id/repair"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/repair"/>
+    <item android:title="@string/user"
+        app:showAsAction="ifRoom"
+        android:id="@+id/user"
+        android:icon="@drawable/user"/>
+</menu>
