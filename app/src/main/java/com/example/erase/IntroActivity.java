@@ -17,11 +17,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -61,7 +63,7 @@ public class IntroActivity extends AppCompatActivity {
 
 
         //hide the action bar
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         //fill list screen
         final List<ScreenItem> mList = new ArrayList<>();
@@ -143,8 +145,7 @@ public class IntroActivity extends AppCompatActivity {
 
     private boolean restorePrefData() {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
-        boolean isIntroActivityOpenedBefore = pref.getBoolean("isLaunchOpened",false);
-        return isIntroActivityOpenedBefore;
+        return pref.getBoolean("isLaunchOpened",false);
     }
 
     private void savePrefsData() {

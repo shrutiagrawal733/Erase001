@@ -1,6 +1,5 @@
 package com.example.erase;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -10,17 +9,14 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
-import android.provider.Settings;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -52,8 +48,7 @@ public class MapActivity extends AppCompatActivity {
 
     @SuppressLint("MissingPermission")
     private void getLastLocation(){
-        if (checkPermissions()) {
-            if (isLocationEnabled()) {
+
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(
                         new OnCompleteListener<Location>() {
                             @Override
@@ -69,15 +64,8 @@ public class MapActivity extends AppCompatActivity {
                             }
                         }
                 );
-            } else {
-                Toast.makeText(this, "Turn on location", Toast.LENGTH_LONG).show();
-                //Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                //startActivity(intent);
             }
-        } else {
-            requestPermissions();
-        }
-    }
+
 
     private void makeList()
     {
@@ -145,45 +133,17 @@ public class MapActivity extends AppCompatActivity {
         }
     };
 
-    private boolean checkPermissions() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        return false;
-    }
 
-    private void requestPermissions() {
-        ActivityCompat.requestPermissions(
-                this,
-                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
-                PERMISSION_ID);
-    }
 
-    private boolean isLocationEnabled() {
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-                LocationManager.NETWORK_PROVIDER
-        );
-    }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_ID) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getLastLocation();
             }
         }
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        if (checkPermissions()) {
-            getLastLocation();
-        }
-
     }
 
 

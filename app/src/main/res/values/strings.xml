@@ -111,4 +111,13 @@
     <string name="buy">Buy</string>
     <string name="repair">Repair</string>
     <string name="user">User</string>
+    <string name="date">DATE</string>
+    <string name="gadget">GADGET</string>
+    <string name="dropbox">DROPBOX</string>
+    <string name="zero">0</string>
+    <string name="points_earned">points earned</string>
+    <string name="sell_e_waste">Sell E-Waste</string>
+    <string name="dropBox">Recycling center</string>
+    <string name="product">Product</string>
+    <string name="done">Done</string>
 </resources>

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +42,7 @@ public class SignUp extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = edt1.getText().toString();
+                final String email = edt1.getText().toString();
                 String password = edt2.getText().toString();
                 if(email.isEmpty()&&password.isEmpty())
                 {
@@ -67,8 +68,10 @@ public class SignUp extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                startActivity(new Intent(SignUp.this,Main.class));
-
+                                Intent i = new Intent(SignUp.this,Main.class);
+                                i.putExtra("EMail", email);
+                                startActivity(i);
+                                finish();
 
                             } else {
                                 String errorMessage = task.getException().getMessage();
@@ -88,6 +91,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
     public void onBackPressed()
     {
         AlertDialog.Builder builder =new AlertDialog.Builder(this);
