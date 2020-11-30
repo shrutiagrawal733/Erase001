@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,13 +52,14 @@ public class SellFragment extends Fragment {
         String gadget= pref.getString("gadget",null);
         boolean t = pref.getBoolean("Activity",false);
 
-        Toast.makeText(getContext(), dropbox+gadget+t, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), dropbox+gadget+t, Toast.LENGTH_LONG).show();
         if(t)
         {
             int temp = (new Random()).nextInt();
             dbManager.insert(id, dropbox ,gadget,temp);
             SharedPreferences.Editor editor= pref.edit();
             editor.putBoolean("Activity",false);
+            editor.apply();
         }
 
         ArrayList<DataModel> data = new ArrayList<>();
@@ -70,10 +70,13 @@ public class SellFragment extends Fragment {
         int c = cursor.getColumnIndex("Gadget");
         int d = cursor.getColumnIndex("Points");
 
-        //TODO: add entries from database of one user to the list
-        do {
-            data.add(new DataModel(cursor.getString(a), cursor.getString(b), cursor.getString(c), Integer.parseInt(cursor.getString(d))));
-        } while (cursor.moveToPrevious());
+        if(cursor.getCount()>0)
+        {
+            do {
+                data.add(new DataModel(cursor.getString(a), cursor.getString(b), cursor.getString(c), Integer.parseInt(cursor.getString(d))));
+            } while (cursor.moveToPrevious());
+        }
+
 
         RecyclerView.Adapter adapter = new CustomAdapter(data);
         recyclerView.setAdapter(adapter);
@@ -115,7 +118,7 @@ public class SellFragment extends Fragment {
         int c = cursor.getColumnIndex("Gadget");
         int d = cursor.getColumnIndex("Points");
 
-        //TODO: add entries from database of one user to the list
+
         /* do {
         //   data.add(new DataModel(cursor.getString(a), cursor.getString(b), cursor.getString(c), Integer.parseInt(cursor.getString(d))));
         } while (cursor.moveToPrevious());
